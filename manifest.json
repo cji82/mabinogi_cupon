@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "마비노기 모바일 쿠폰",
+  "version": "1.3.3",
+  "description": "저장한 회원코드(NPA_CODE)로 쿠폰 페이지에 자동 입력합니다.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://mcoupon.nexon.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "마비노기 모바일 쿠폰",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mcoupon.nexon.com/mabinogimobile/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
